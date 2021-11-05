@@ -20,7 +20,7 @@ const todos = [
         completed: true
     }
 ];
-
+/*
 const leftTodos = todos.filter(e=> !e.completed).length;
 
 let leftTodosParagraph = document.createElement("p");
@@ -32,4 +32,9 @@ todos.forEach(e=> {
     para.textContent = `${e.text}`;
     document.body.append(para)
     
+})*/
+
+const button = document.querySelector("button");
+button.addEventListener("click", function(e){
+    console.log("Hello I am button");
 })
