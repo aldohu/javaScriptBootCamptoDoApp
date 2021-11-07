@@ -57,3 +57,20 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
     renderTodos(todos, filters)
     e.target.elements.text.value = ''
 })
+
+ const hideCompleted = todos.filter(e=> e.completed)
+ 
+document.querySelector("#checking").addEventListener("change", function(e){
+    if(e.target.checked) {
+        renderTodos(hideCompleted,filters)
+    }else {
+        renderTodos(todos,filters)
+    }
+})
+/*
+1.Create a checkbox and setup event listener -> Hide completed
+2.Create new hideCompleted filter (default false)
+3.Update hideCompleted an render list on checkbox change
+4.Setup renderTodos to remove completed items
+
+*/ 
