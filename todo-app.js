@@ -1,23 +1,14 @@
-const todos = [{
-    text: 'Order cat food',
-    completed: false
-}, {
-    text: 'Clean kitchen',
-    completed: true
-}, {
-    text: 'Buy food',
-    completed: true
-}, {
-    text: 'Do work',
-    completed: false
-}, {
-    text: 'Exercise',
-    completed: true
-}]
+let todos = []
 
 const filters = {
     searchText: ''
 }
+const todosJSON = localStorage.getItem("todos")
+
+if(todosJSON !== null) {
+    todos = JSON.parse(todosJSON)
+}
+
 
 const renderTodos = function (todos, filters) {
     const filteredTodos = todos.filter(function (todo) {
@@ -36,7 +27,14 @@ const renderTodos = function (todos, filters) {
 
     filteredTodos.forEach(function (todo) {
         const p = document.createElement('p')
+        if(todo.text.length > 0) {
+
+        
         p.textContent = todo.text
+    }
+        else {
+            p.textContent = "random todo";
+        }
         document.querySelector('#todos').appendChild(p)
     })
 }
@@ -52,8 +50,9 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
     e.preventDefault()
     todos.push({
         text: e.target.elements.text.value,
-        completed: false
+        completed: false 
     })
+    localStorage.setItem("todos", JSON.stringify(todos))
     renderTodos(todos, filters)
     e.target.elements.text.value = ''
 })
@@ -74,3 +73,28 @@ document.querySelector("#checking").addEventListener("change", function(e){
 4.Setup renderTodos to remove completed items
 
 */ 
+
+
+//fetch exisitng todos from localStorage
+//getSavedTodos
+
+
+//save todos to local storage
+//saveTodos
+
+/* render app based on filters
+    render todos
+*/
+
+/*
+get the Dom elements for an invidualnote 
+generateTodoDOM
+*/
+
+
+/*
+Get the DOM elements for list summary
+generateSummaryDOM
+
+
+*/
